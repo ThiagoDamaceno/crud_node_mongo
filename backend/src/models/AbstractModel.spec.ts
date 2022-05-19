@@ -1,3 +1,4 @@
+import { Generator } from '../utils/Generator'
 import { AbstractModel } from './AbstractModel'
 
 /* eslint-disable no-undef */
@@ -5,7 +6,7 @@ describe('AbstractModel Test', () => {
   it('Should be able to create a model with an existing id', () => {
     class ModelTest extends AbstractModel { }
 
-    const id = 'new id'
+    const id = Generator.uuidv4()
     const modelTest = new ModelTest({
       id
     })

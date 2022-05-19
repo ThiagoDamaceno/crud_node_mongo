@@ -21,8 +21,8 @@ class ConnectorModel extends AbstractModel implements IConnectorModelAttributes 
   description: string
   status: string
 
-  constructor (connectorModelAttributes: IConnectorModelAttributes, abstractModelAttributes: IAbstractModelAttributes) {
-    super(abstractModelAttributes)
+  constructor (connectorModelAttributes: IConnectorModelAttributes, abstractModelAttributes?: IAbstractModelAttributes) {
+    super(abstractModelAttributes ?? {})
 
     this.name = connectorModelAttributes.name
     this.type = connectorModelAttributes.type
@@ -35,4 +35,4 @@ class ConnectorModel extends AbstractModel implements IConnectorModelAttributes 
   }
 }
 
-export { ConnectorModel }
+export { IConnectorModelAttributes, ConnectorModel }
