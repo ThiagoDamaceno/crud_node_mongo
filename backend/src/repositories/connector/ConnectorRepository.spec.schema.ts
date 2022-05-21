@@ -34,10 +34,10 @@ export default (connectorRepository: IConnectorRepository) => {
 
     expect(await connectorRepository.createConnector(connector)).toEqual(connector)
 
-    const responseGetById = await connectorRepository.getConnectorById(connector.id)
+    const responseGetById = await connectorRepository.getConnectorById(connector._id)
 
     expect(responseGetById).not.toBeUndefined()
-    expect(connector.id).toBe(responseGetById!.id)
+    expect(connector._id).toBe(responseGetById!._id)
     expect(connector.name).toBe(responseGetById!.name)
     expect(await connectorRepository.getConnectorById(Generator.uuidv4())).toBeUndefined()
   })
@@ -192,11 +192,11 @@ export default (connectorRepository: IConnectorRepository) => {
 
     await connectorRepository.createConnector(connector)
 
-    expect(await connectorRepository.getConnectorById(connector.id)).not.toBeUndefined()
+    expect(await connectorRepository.deleteConnectorById(connector._id)).toBe(true)
 
-    await connectorRepository.deleteConnectorById(connector.id)
+    expect(await connectorRepository.getConnectorById(connector._id)).toBeUndefined()
 
-    expect(await connectorRepository.getConnectorById(connector.id)).toBeUndefined()
+    expect(await connectorRepository.deleteConnectorById(connector._id)).toBe(false)
   })
 
   it('Should be able to update a connector', async () => {
@@ -223,7 +223,7 @@ export default (connectorRepository: IConnectorRepository) => {
     expect(responseUpdate.name).toBe(newName)
     expect(responseUpdate.status).toBe(newStatus)
 
-    const responseGetById = await connectorRepository.getConnectorById(connector.id)
+    const responseGetById = await connectorRepository.getConnectorById(connector._id)
 
     expect(responseGetById!.name).toBe(newName)
     expect(responseGetById!.status).toBe(newStatus)

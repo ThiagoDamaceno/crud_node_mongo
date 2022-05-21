@@ -1,6 +1,6 @@
 import { AbstractModel, IAbstractModelAttributes } from './AbstractModel'
 
-interface IConnectorModelAttributes {
+interface IConnectorModelAttributes extends IAbstractModelAttributes {
   name: string
   type: string
   privacy: string
@@ -12,6 +12,7 @@ interface IConnectorModelAttributes {
 }
 
 class ConnectorModel extends AbstractModel implements IConnectorModelAttributes {
+  _id!: string
   name: string
   type: string
   privacy: string

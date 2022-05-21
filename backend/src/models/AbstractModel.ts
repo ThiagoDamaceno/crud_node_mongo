@@ -1,14 +1,14 @@
 import { Generator } from '../utils/Generator'
 
 interface IAbstractModelAttributes {
-  id?: string
+  _id?: string
 }
 
-abstract class AbstractModel implements IAbstractModelAttributes {
-  id: string
+abstract class AbstractModel {
+  _id: string
 
   constructor (abstractModelAttributes: IAbstractModelAttributes) {
-    this.id = abstractModelAttributes.id ?? this.getNewId()
+    this._id = abstractModelAttributes._id ?? this.getNewId()
   }
 
   private getNewId () {

@@ -25,7 +25,7 @@ describe('ConnectorModel Test', () => {
     expect(connector.privacy).toBe(connectorAttributes.privacy)
     expect(connector.status).toBe(connectorAttributes.status)
     expect(connector.type).toBe(connectorAttributes.type)
-    expect(connector.id).not.toBe(id)
+    expect(connector._id).not.toBe(id)
   })
 
   it('Should be able to create a connector without an existing id', () => {
@@ -42,7 +42,7 @@ describe('ConnectorModel Test', () => {
       type: 'ty'
     }
 
-    const connectorTwo = new ConnectorModel(connectorAttributes, { id })
+    const connectorTwo = new ConnectorModel(connectorAttributes, { _id: id })
 
     expect(connectorTwo.name).toBe(connectorAttributes.name)
     expect(connectorTwo.baseUrl).toBe(connectorAttributes.baseUrl)
@@ -52,6 +52,6 @@ describe('ConnectorModel Test', () => {
     expect(connectorTwo.privacy).toBe(connectorAttributes.privacy)
     expect(connectorTwo.status).toBe(connectorAttributes.status)
     expect(connectorTwo.type).toBe(connectorAttributes.type)
-    expect(connectorTwo.id).toBe(id)
+    expect(connectorTwo._id).toBe(id)
   })
 })

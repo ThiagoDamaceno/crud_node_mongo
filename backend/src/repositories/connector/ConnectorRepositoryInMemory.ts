@@ -11,7 +11,7 @@ class ConnectorRepositoryInMemory implements IConnectorRepository {
   async deleteConnectorById (id: string): Promise<boolean> {
     const countConnectorsBefore = this.connectors.length
 
-    this.connectors = this.connectors.filter(connector => connector.id !== id)
+    this.connectors = this.connectors.filter(connector => connector._id !== id)
 
     const countConnectorsAfter = this.connectors.length
 
@@ -19,7 +19,7 @@ class ConnectorRepositoryInMemory implements IConnectorRepository {
   }
 
   async getConnectorById (id: string): Promise<ConnectorModel | undefined> {
-    return this.connectors.find(connector => connector.id === id)
+    return this.connectors.find(connector => connector._id === id)
   }
 
   getConnectors (): Promise<ConnectorModel[]> {
@@ -44,7 +44,7 @@ class ConnectorRepositoryInMemory implements IConnectorRepository {
 
   async updateConnector (connectorModel: ConnectorModel): Promise<ConnectorModel> {
     for (let i = 0; i < this.connectors.length; i++) {
-      if (this.connectors[i].id === connectorModel.id) {
+      if (this.connectors[i]._id === connectorModel._id) {
         this.connectors[i] = connectorModel
         break
       }
