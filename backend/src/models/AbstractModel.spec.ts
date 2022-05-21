@@ -8,10 +8,10 @@ describe('AbstractModel Test', () => {
 
     const id = Generator.uuidv4()
     const modelTest = new ModelTest({
-      id
+      _id: id
     })
 
-    expect(modelTest.id).toBe(id)
+    expect(modelTest._id).toBe(id)
   })
 
   it('Should be able to create a model without an existing id', () => {
@@ -20,9 +20,9 @@ describe('AbstractModel Test', () => {
     const modelTestOne = new ModelTest({})
     const modelTestTwo = new ModelTest({})
 
-    expect(modelTestOne.id).not.toBeUndefined()
-    expect(modelTestTwo.id).not.toBeUndefined()
+    expect(modelTestOne._id).not.toBeUndefined()
+    expect(modelTestTwo._id).not.toBeUndefined()
 
-    expect(modelTestOne.id).not.toBe(modelTestTwo.id)
+    expect(modelTestOne._id).not.toBe(modelTestTwo._id)
   })
 })
