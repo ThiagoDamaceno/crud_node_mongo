@@ -1,4 +1,4 @@
-import { Generator } from '../utils/Generator'
+import { Generator } from '../utils/generator/Generator'
 import { AbstractModel } from './AbstractModel'
 
 /* eslint-disable no-undef */
@@ -11,7 +11,7 @@ describe('AbstractModel Test', () => {
       _id: id
     })
 
-    expect(modelTest._id).toBe(id)
+    expect(modelTest.getId()).toBe(id)
   })
 
   it('Should be able to create a model without an existing id', () => {
@@ -20,9 +20,9 @@ describe('AbstractModel Test', () => {
     const modelTestOne = new ModelTest({})
     const modelTestTwo = new ModelTest({})
 
-    expect(modelTestOne._id).not.toBeUndefined()
-    expect(modelTestTwo._id).not.toBeUndefined()
+    expect(modelTestOne.getId()).not.toBeUndefined()
+    expect(modelTestTwo.getId()).not.toBeUndefined()
 
-    expect(modelTestOne._id).not.toBe(modelTestTwo._id)
+    expect(modelTestOne.getId()).not.toBe(modelTestTwo.getId())
   })
 })

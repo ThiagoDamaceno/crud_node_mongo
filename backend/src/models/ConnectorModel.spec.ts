@@ -1,4 +1,4 @@
-import { Generator } from '../utils/Generator'
+import { Generator } from '../utils/generator/Generator'
 import { ConnectorModel, IConnectorModelAttributes } from './ConnectorModel'
 
 /* eslint-disable no-undef */
@@ -8,7 +8,7 @@ describe('ConnectorModel Test', () => {
     const connectorAttributes: IConnectorModelAttributes = {
       name: 'na',
       baseUrl: 'bu',
-      catagory: 'ca',
+      category: 'ca',
       description: 'de',
       logoUrl: 'lu',
       privacy: 'pr',
@@ -19,13 +19,13 @@ describe('ConnectorModel Test', () => {
 
     expect(connector.name).toBe(connectorAttributes.name)
     expect(connector.baseUrl).toBe(connectorAttributes.baseUrl)
-    expect(connector.catagory).toBe(connectorAttributes.catagory)
+    expect(connector.category).toBe(connectorAttributes.category)
     expect(connector.description).toBe(connectorAttributes.description)
     expect(connector.logoUrl).toBe(connectorAttributes.logoUrl)
     expect(connector.privacy).toBe(connectorAttributes.privacy)
     expect(connector.status).toBe(connectorAttributes.status)
     expect(connector.type).toBe(connectorAttributes.type)
-    expect(connector._id).not.toBe(id)
+    expect(connector.getId()).not.toBe(id)
   })
 
   it('Should be able to create a connector without an existing id', () => {
@@ -34,7 +34,7 @@ describe('ConnectorModel Test', () => {
     const connectorAttributes: IConnectorModelAttributes = {
       name: 'na',
       baseUrl: 'bu',
-      catagory: 'ca',
+      category: 'ca',
       description: 'de',
       logoUrl: 'lu',
       privacy: 'pr',
@@ -46,12 +46,12 @@ describe('ConnectorModel Test', () => {
 
     expect(connectorTwo.name).toBe(connectorAttributes.name)
     expect(connectorTwo.baseUrl).toBe(connectorAttributes.baseUrl)
-    expect(connectorTwo.catagory).toBe(connectorAttributes.catagory)
+    expect(connectorTwo.category).toBe(connectorAttributes.category)
     expect(connectorTwo.description).toBe(connectorAttributes.description)
     expect(connectorTwo.logoUrl).toBe(connectorAttributes.logoUrl)
     expect(connectorTwo.privacy).toBe(connectorAttributes.privacy)
     expect(connectorTwo.status).toBe(connectorAttributes.status)
     expect(connectorTwo.type).toBe(connectorAttributes.type)
-    expect(connectorTwo._id).toBe(id)
+    expect(connectorTwo.getId()).toBe(id)
   })
 })

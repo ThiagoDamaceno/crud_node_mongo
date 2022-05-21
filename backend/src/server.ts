@@ -17,8 +17,9 @@ class Server {
   }
 
   init () {
-    this.expressApp.listen(3000, () => {
-      console.log(`Server's running on port ${3000}...`)
+    const PORT = process.env.NODE_PORT || 3000
+    this.expressApp.listen(PORT, () => {
+      console.log(`Server's running on port ${PORT}...`)
     })
   }
 }

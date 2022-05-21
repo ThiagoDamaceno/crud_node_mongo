@@ -1,8 +1,9 @@
-import { ConnectorModel } from '../../models/ConnectorModel'
-import { IConnectorRepository } from './IConnectorRepository'
+import { ConnectorModel } from '../../../models/ConnectorModel'
+import { IConnectorRepository } from '../IConnectorRepository'
 
 class ConnectorRepositoryInMemory implements IConnectorRepository {
   private connectors: ConnectorModel[] = []
+
   async createConnector (connectorModel: ConnectorModel): Promise<ConnectorModel> {
     this.connectors.push(connectorModel)
     return connectorModel
@@ -11,7 +12,7 @@ class ConnectorRepositoryInMemory implements IConnectorRepository {
   async deleteConnectorById (id: string): Promise<boolean> {
     const countConnectorsBefore = this.connectors.length
 
-    this.connectors = this.connectors.filter(connector => connector._id !== id)
+    this.connectors = this.connectors.filter(connector => connector.getId() !== id)
 
     const countConnectorsAfter = this.connectors.length
 
@@ -19,15 +20,15 @@ class ConnectorRepositoryInMemory implements IConnectorRepository {
   }
 
   async getConnectorById (id: string): Promise<ConnectorModel | undefined> {
-    return this.connectors.find(connector => connector._id === id)
+    return this.connectors.find(connector => connector.getId() === id)
   }
 
-  getConnectors (): Promise<ConnectorModel[]> {
-    throw new Error('Method not implemented.')
+  async getConnectors (): Promise<ConnectorModel[]> {
+    return this.connectors
   }
 
   async getConnectorsByCategory (category: string): Promise<ConnectorModel[]> {
-    return this.connectors.filter(connector => connector.catagory === category)
+    return this.connectors.filter(connector => connector.category === category)
   }
 
   async getConnectorsByName (name: string): Promise<ConnectorModel[]> {
@@ -44,7 +45,7 @@ class ConnectorRepositoryInMemory implements IConnectorRepository {
 
   async updateConnector (connectorModel: ConnectorModel): Promise<ConnectorModel> {
     for (let i = 0; i < this.connectors.length; i++) {
-      if (this.connectors[i]._id === connectorModel._id) {
+      if (this.connectors[i].getId() === connectorModel.getId()) {
         this.connectors[i] = connectorModel
         break
       }
