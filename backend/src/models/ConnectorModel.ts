@@ -6,19 +6,18 @@ interface IConnectorModelAttributes extends IAbstractModelAttributes {
   privacy: string
   baseUrl: string
   logoUrl: string
-  catagory: string
+  category: string
   description: string
   status: string
 }
 
-class ConnectorModel extends AbstractModel implements IConnectorModelAttributes {
-  _id!: string
+class ConnectorModel extends AbstractModel {
   name: string
   type: string
   privacy: string
   baseUrl: string
   logoUrl: string
-  catagory: string
+  category: string
   description: string
   status: string
 
@@ -30,7 +29,7 @@ class ConnectorModel extends AbstractModel implements IConnectorModelAttributes 
     this.privacy = connectorModelAttributes.privacy
     this.baseUrl = connectorModelAttributes.baseUrl
     this.logoUrl = connectorModelAttributes.logoUrl
-    this.catagory = connectorModelAttributes.catagory
+    this.category = connectorModelAttributes.category
     this.description = connectorModelAttributes.description
     this.status = connectorModelAttributes.status
   }

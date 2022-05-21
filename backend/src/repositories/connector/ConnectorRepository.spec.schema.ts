@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 
 import { ConnectorModel } from '../../models/ConnectorModel'
-import { Generator } from '../../utils/Generator'
+import { Generator } from '../../utils/generator/Generator'
 import { IConnectorRepository } from './IConnectorRepository'
 
 export default (connectorRepository: IConnectorRepository) => {
@@ -9,7 +9,7 @@ export default (connectorRepository: IConnectorRepository) => {
     const connector = new ConnectorModel({
       name: 'na',
       baseUrl: 'bu',
-      catagory: 'ca',
+      category: 'ca',
       description: 'de',
       logoUrl: 'lu',
       privacy: 'pr',
@@ -24,7 +24,7 @@ export default (connectorRepository: IConnectorRepository) => {
     const connector = new ConnectorModel({
       name: 'na',
       baseUrl: 'bu',
-      catagory: 'ca',
+      category: 'ca',
       description: 'de',
       logoUrl: 'lu',
       privacy: 'pr',
@@ -34,10 +34,10 @@ export default (connectorRepository: IConnectorRepository) => {
 
     expect(await connectorRepository.createConnector(connector)).toEqual(connector)
 
-    const responseGetById = await connectorRepository.getConnectorById(connector._id)
+    const responseGetById = await connectorRepository.getConnectorById(connector.getId())
 
     expect(responseGetById).not.toBeUndefined()
-    expect(connector._id).toBe(responseGetById!._id)
+    expect(connector.getId()).toBe(responseGetById!.getId())
     expect(connector.name).toBe(responseGetById!.name)
     expect(await connectorRepository.getConnectorById(Generator.uuidv4())).toBeUndefined()
   })
@@ -50,7 +50,7 @@ export default (connectorRepository: IConnectorRepository) => {
     const connectorOne = new ConnectorModel({
       name: 'na',
       baseUrl: 'bu',
-      catagory: 'ca',
+      category: 'ca',
       description: 'de',
       logoUrl: 'lu',
       privacy: 'pr',
@@ -61,7 +61,7 @@ export default (connectorRepository: IConnectorRepository) => {
     const connectorTwo = new ConnectorModel({
       name: 'na2',
       baseUrl: 'bu2',
-      catagory: 'ca',
+      category: 'ca',
       description: 'de2',
       logoUrl: 'lu2',
       privacy: 'pr2',
@@ -84,7 +84,7 @@ export default (connectorRepository: IConnectorRepository) => {
     const connectorOne = new ConnectorModel({
       name: 'na',
       baseUrl: 'bu',
-      catagory: 'ca',
+      category: 'ca',
       description: 'de',
       logoUrl: 'lu',
       privacy: 'pr',
@@ -95,7 +95,7 @@ export default (connectorRepository: IConnectorRepository) => {
     const connectorTwo = new ConnectorModel({
       name: 'na',
       baseUrl: 'bu2',
-      catagory: 'ca2',
+      category: 'ca2',
       description: 'de2',
       logoUrl: 'lu2',
       privacy: 'pr2',
@@ -118,7 +118,7 @@ export default (connectorRepository: IConnectorRepository) => {
     const connectorOne = new ConnectorModel({
       name: 'na',
       baseUrl: 'bu',
-      catagory: 'ca',
+      category: 'ca',
       description: 'de',
       logoUrl: 'lu',
       privacy: 'pr',
@@ -129,7 +129,7 @@ export default (connectorRepository: IConnectorRepository) => {
     const connectorTwo = new ConnectorModel({
       name: 'na2',
       baseUrl: 'bu2',
-      catagory: 'ca2',
+      category: 'ca2',
       description: 'de2',
       logoUrl: 'lu2',
       privacy: 'pr',
@@ -152,7 +152,7 @@ export default (connectorRepository: IConnectorRepository) => {
     const connectorOne = new ConnectorModel({
       name: 'na',
       baseUrl: 'bu',
-      catagory: 'ca',
+      category: 'ca',
       description: 'de',
       logoUrl: 'lu',
       privacy: 'pr',
@@ -163,7 +163,7 @@ export default (connectorRepository: IConnectorRepository) => {
     const connectorTwo = new ConnectorModel({
       name: 'na2',
       baseUrl: 'bu2',
-      catagory: 'ca2',
+      category: 'ca2',
       description: 'de2',
       logoUrl: 'lu2',
       privacy: 'pr2',
@@ -182,7 +182,7 @@ export default (connectorRepository: IConnectorRepository) => {
     const connector = new ConnectorModel({
       name: 'na',
       baseUrl: 'bu',
-      catagory: 'ca',
+      category: 'ca',
       description: 'de',
       logoUrl: 'lu',
       privacy: 'pr',
@@ -192,18 +192,18 @@ export default (connectorRepository: IConnectorRepository) => {
 
     await connectorRepository.createConnector(connector)
 
-    expect(await connectorRepository.deleteConnectorById(connector._id)).toBe(true)
+    expect(await connectorRepository.deleteConnectorById(connector.getId())).toBe(true)
 
-    expect(await connectorRepository.getConnectorById(connector._id)).toBeUndefined()
+    expect(await connectorRepository.getConnectorById(connector.getId())).toBeUndefined()
 
-    expect(await connectorRepository.deleteConnectorById(connector._id)).toBe(false)
+    expect(await connectorRepository.deleteConnectorById(connector.getId())).toBe(false)
   })
 
   it('Should be able to update a connector', async () => {
     const connector = new ConnectorModel({
       name: 'na',
       baseUrl: 'bu',
-      catagory: 'ca',
+      category: 'ca',
       description: 'de',
       logoUrl: 'lu',
       privacy: 'pr',
@@ -223,7 +223,7 @@ export default (connectorRepository: IConnectorRepository) => {
     expect(responseUpdate.name).toBe(newName)
     expect(responseUpdate.status).toBe(newStatus)
 
-    const responseGetById = await connectorRepository.getConnectorById(connector._id)
+    const responseGetById = await connectorRepository.getConnectorById(connector.getId())
 
     expect(responseGetById!.name).toBe(newName)
     expect(responseGetById!.status).toBe(newStatus)
