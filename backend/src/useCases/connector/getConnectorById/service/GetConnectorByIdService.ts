@@ -10,12 +10,12 @@ class GetConnectorByIdService {
     private connectorRepository: IConnectorRepository
   ) { }
 
-  async execute (id: string): Promise<ConnectorModel | undefined | InvalidUuidError> {
-    if (!Validator.isUuid(id)) {
+  async execute (_id: string): Promise<ConnectorModel | undefined | InvalidUuidError> {
+    if (!Validator.isUuid(_id)) {
       return new InvalidUuidError()
     }
 
-    return await this.connectorRepository.getConnectorById(id)
+    return await this.connectorRepository.getConnectorById(_id)
   }
 }
 

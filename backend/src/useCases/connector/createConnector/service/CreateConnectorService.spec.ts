@@ -16,9 +16,18 @@ describe('CreateConnectorService test', () => {
       type: 'ty'
     }
 
-    const service = new CreateConnectorService(new ConnectorRepositoryInMemory())
+    const service: any = new CreateConnectorService(new ConnectorRepositoryInMemory())
 
-    const response = await service.execute(dataForTestWithoutId)
+    const response = await service.execute(
+      dataForTestWithoutId.name,
+      dataForTestWithoutId.baseUrl,
+      dataForTestWithoutId.category,
+      dataForTestWithoutId.description,
+      dataForTestWithoutId.logoUrl,
+      dataForTestWithoutId.privacy,
+      dataForTestWithoutId.status,
+      dataForTestWithoutId.type
+    )
     expect(response.getId()).not.toBeUndefined()
   })
 })

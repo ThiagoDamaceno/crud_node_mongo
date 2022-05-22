@@ -35,8 +35,26 @@ describe('GetConnectorsByCategoryService test', () => {
     const responseBefore = await service.execute(category)
     const countResponseBefore = responseBefore.length
 
-    await new CreateConnectorService(repositoryInMemory).execute(dataForTestWithoutId)
-    await new CreateConnectorService(repositoryInMemory).execute(dataForTestWithoutIdTwo)
+    await new CreateConnectorService(repositoryInMemory).execute(
+      dataForTestWithoutId.name,
+      dataForTestWithoutId.baseUrl,
+      dataForTestWithoutId.category,
+      dataForTestWithoutId.description,
+      dataForTestWithoutId.logoUrl,
+      dataForTestWithoutId.privacy,
+      dataForTestWithoutId.status,
+      dataForTestWithoutId.type
+    )
+    await new CreateConnectorService(repositoryInMemory).execute(
+      dataForTestWithoutIdTwo.name,
+      dataForTestWithoutIdTwo.baseUrl,
+      dataForTestWithoutIdTwo.category,
+      dataForTestWithoutIdTwo.description,
+      dataForTestWithoutIdTwo.logoUrl,
+      dataForTestWithoutIdTwo.privacy,
+      dataForTestWithoutIdTwo.status,
+      dataForTestWithoutIdTwo.type
+    )
 
     const responseAfter = await service.execute(category)
     const countResponseAfter = responseAfter.length

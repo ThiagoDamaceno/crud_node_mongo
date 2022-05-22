@@ -22,7 +22,16 @@ describe('GetConnectorByIdService test', () => {
 
     const service = new GetConnectorByIdService(repositoryInMemory)
 
-    const responseCreate = await new CreateConnectorService(repositoryInMemory).execute(dataForTestWithoutId)
+    const responseCreate: any = await new CreateConnectorService(repositoryInMemory).execute(
+      dataForTestWithoutId.name,
+      dataForTestWithoutId.baseUrl,
+      dataForTestWithoutId.category,
+      dataForTestWithoutId.description,
+      dataForTestWithoutId.logoUrl,
+      dataForTestWithoutId.privacy,
+      dataForTestWithoutId.status,
+      dataForTestWithoutId.type
+    )
 
     const responseGetById: any = await service.execute(responseCreate.getId())
 

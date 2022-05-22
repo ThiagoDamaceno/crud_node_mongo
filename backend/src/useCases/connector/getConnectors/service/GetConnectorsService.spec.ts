@@ -22,7 +22,16 @@ describe('GetConnectorsService test', () => {
     const responseBefore = await service.execute()
     const countResponseBefore = responseBefore.length
 
-    await new CreateConnectorService(repositoryInMemory).execute(dataForTestWithoutId)
+    await new CreateConnectorService(repositoryInMemory).execute(
+      dataForTestWithoutId.name,
+      dataForTestWithoutId.baseUrl,
+      dataForTestWithoutId.category,
+      dataForTestWithoutId.description,
+      dataForTestWithoutId.logoUrl,
+      dataForTestWithoutId.privacy,
+      dataForTestWithoutId.status,
+      dataForTestWithoutId.type
+    )
 
     const responseAfter = await service.execute()
     const countResponseAfter = responseAfter.length
