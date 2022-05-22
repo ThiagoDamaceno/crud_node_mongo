@@ -14,6 +14,5 @@ const connectorSchemaMongo = new Schema<IConnectorModelAttributes>({
 })
 
 const ConnectorModelMongo = model<IConnectorModelAttributes>('Connector', connectorSchemaMongo)
-type ConnectorModelMongoType = typeof ConnectorModelMongo
 
-export { ConnectorModelMongo, ConnectorModelMongoType }
+export { ConnectorModelMongo }
