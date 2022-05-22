@@ -20,7 +20,16 @@ describe('DeleteConnectorByIdService test', () => {
     const repositoryInMemory = new ConnectorRepositoryInMemory()
     const serviceDeleteById = new DeleteConnectorByIdService(repositoryInMemory)
 
-    const responseCreate = await new CreateConnectorService(repositoryInMemory).execute(dataForTestWithoutId)
+    const responseCreate: any = await new CreateConnectorService(repositoryInMemory).execute(
+      dataForTestWithoutId.name,
+      dataForTestWithoutId.baseUrl,
+      dataForTestWithoutId.category,
+      dataForTestWithoutId.description,
+      dataForTestWithoutId.logoUrl,
+      dataForTestWithoutId.privacy,
+      dataForTestWithoutId.status,
+      dataForTestWithoutId.type
+    )
 
     const serviceGetById = new GetConnectorByIdService(repositoryInMemory)
 

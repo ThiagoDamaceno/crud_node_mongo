@@ -20,14 +20,33 @@ describe('UpdateConnectorService test', () => {
     const repositoryInMemory = new ConnectorRepositoryInMemory()
     const serviceUpdate = new UpdateConnectorService(repositoryInMemory)
 
-    const connector = await new CreateConnectorService(repositoryInMemory).execute(dataForTestWithoutId)
+    const connector: any = await new CreateConnectorService(repositoryInMemory).execute(
+      dataForTestWithoutId.name,
+      dataForTestWithoutId.baseUrl,
+      dataForTestWithoutId.category,
+      dataForTestWithoutId.description,
+      dataForTestWithoutId.logoUrl,
+      dataForTestWithoutId.privacy,
+      dataForTestWithoutId.status,
+      dataForTestWithoutId.type
+    )
 
     dataForTestWithoutId = { ...dataForTestWithoutId, _id: connector.getId() }
 
     const newName = 'New name'
     dataForTestWithoutId.name = newName
 
-    expect(await serviceUpdate.execute(dataForTestWithoutId)).toBeInstanceOf(ConnectorModel)
+    expect(await serviceUpdate.execute(
+      connector.getId(),
+      dataForTestWithoutId.name,
+      dataForTestWithoutId.baseUrl,
+      dataForTestWithoutId.category,
+      dataForTestWithoutId.description,
+      dataForTestWithoutId.logoUrl,
+      dataForTestWithoutId.privacy,
+      dataForTestWithoutId.status,
+      dataForTestWithoutId.type
+    )).toBeInstanceOf(ConnectorModel)
 
     const responseGetById: any | ConnectorModel = await new GetConnectorByIdService(repositoryInMemory).execute(connector.getId())
 
