@@ -21,8 +21,8 @@ class ConnectorModel extends AbstractModel {
   description: string
   status: string
 
-  constructor (connectorModelAttributes: IConnectorModelAttributes, abstractModelAttributes?: IAbstractModelAttributes) {
-    super(abstractModelAttributes ?? {})
+  constructor (connectorModelAttributes: IConnectorModelAttributes) {
+    super(connectorModelAttributes._id ? { _id: connectorModelAttributes._id } : {})
 
     this.name = connectorModelAttributes.name
     this.type = connectorModelAttributes.type
