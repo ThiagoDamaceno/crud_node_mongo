@@ -39,10 +39,11 @@ describe('ConnectorModel Test', () => {
       logoUrl: 'lu',
       privacy: 'pr',
       status: 'st',
-      type: 'ty'
+      type: 'ty',
+      _id: id
     }
 
-    const connectorTwo = new ConnectorModel(connectorAttributes, { _id: id })
+    const connectorTwo = new ConnectorModel(connectorAttributes)
 
     expect(connectorTwo.name).toBe(connectorAttributes.name)
     expect(connectorTwo.baseUrl).toBe(connectorAttributes.baseUrl)
