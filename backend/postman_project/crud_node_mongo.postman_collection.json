@@ -1,0 +1,217 @@
+{
+	"info": {
+		"_postman_id": "857dfa98-859b-4c0e-bc70-d35ee942466c",
+		"name": "crud_node_mongo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11723804"
+	},
+	"item": [
+		{
+			"name": "connector",
+			"item": [
+				{
+					"name": "create_connector",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"baseUrl\": \"body.baseUrl1\",\r\n    \"category\": \"body.category2\",\r\n    \"description\": \"body.description2\",\r\n    \"logoUrl\": \"body.logoUr2l\",\r\n    \"name\": \"body7\",\r\n    \"privacy\": \"body.pri22vacy\",\r\n    \"status\": \"body.stat22us\",\r\n    \"type\": \"body.ty22pe\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/connector",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"connector"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update_connector",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\": \"e057f5e1-d390-4079-8083-2677a3e2b135\",\r\n    \"baseUrl\": \"body2\",\r\n    \"category\": \"body3\",\r\n    \"description\": \"body4\",\r\n    \"logoUrl\": \"body5\",\r\n    \"name\": \"body6\",\r\n    \"privacy\": \"body7\",\r\n    \"status\": \"body8\",\r\n    \"type\": \"body9\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/connector",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"connector"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_connectors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/connector/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"connector",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_connectors_by_id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/connector/byId/5f760806-6476-4bfb-b4dc-807977e05b74",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"connector",
+								"byId",
+								"5f760806-6476-4bfb-b4dc-807977e05b74"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_connectors_by_name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/connector/byName/Connector 4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"connector",
+								"byName",
+								"Connector 4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_connectors_by_type",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/connector/byType/test",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"connector",
+								"byType",
+								"test"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_connectors_by_category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/connector/byCategory/body3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"connector",
+								"byCategory",
+								"body3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_connectors_by_privacy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/connector/byPrivacy/body.pri22vacy",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"connector",
+								"byPrivacy",
+								"body.pri22vacy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_connectors_by_id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/connector/byid/4e362eda-574c-4153-b8a8-4046578d2289",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"connector",
+								"byid",
+								"4e362eda-574c-4153-b8a8-4046578d2289"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
