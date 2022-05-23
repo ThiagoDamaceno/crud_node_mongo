@@ -80,3 +80,11 @@ yarn dev
 ```
 yarn start
 ```
+
+<br>
+
+<h2>Como utilizar a API?</h2>
+
+<br>
+
+<p>Utilize o arquivo de projeto do Postman, no diretório backend/postman_project</p>
